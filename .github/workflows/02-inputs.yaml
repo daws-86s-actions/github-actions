@@ -7,6 +7,12 @@ on:
         description: 'Enter your name'
         required: true
         type: string
+      
+      deploy: 
+        description: 'Do you want to deploy the application?' 
+        required: true 
+        type: boolean
+        default: false
 
 jobs:
   print-input:
