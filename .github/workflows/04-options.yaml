@@ -1,0 +1,28 @@
+name: Push Trigger Timeout Demo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Print Message
+        run: |
+          echo "Workflow triggered by a push!"
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Branch: $GITHUB_REF_NAME"
+          echo "Commit: $GITHUB_SHA"
+
+      - name: Execute Task
+        run: |
+          echo "Task started"
+          sleep 10
+          echo "Task completed successfully"
