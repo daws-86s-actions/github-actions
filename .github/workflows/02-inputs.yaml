@@ -1,4 +1,4 @@
-name: User Input Workflow
+name: User Input Testing
 
 on:
   workflow_dispatch:
@@ -7,18 +7,32 @@ on:
         description: 'Enter your name'
         required: true
         type: string
-      
-      deploy: 
-        description: 'Do you want to deploy the application?' 
-        required: true 
+
+      age:
+        description: 'Enter your age'
+        required: true
+        type: number
+
+      is_student:
+        description: 'Are you a student?'
+        required: true
         type: boolean
         default: false
 
+      environment:
+        description: 'Select the deployment environment'
+        required: true
+        type: environment
+
 jobs:
-  print-input:
+  print-inputs:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
 
     steps:
-      - name: Print User Input
+      - name: Print All Inputs
         run: |
-          echo "Hello, ${{ inputs.username }}!"
+          echo "Username: ${{ inputs.username }}"
+          echo "Age: ${{ inputs.age }}"
+          echo "Is Student: ${{ inputs.is_student }}"
+          echo "Environment: ${{ inputs.environment }}"
