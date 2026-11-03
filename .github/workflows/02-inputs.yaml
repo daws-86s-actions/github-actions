@@ -6,7 +6,7 @@ on:
       username:
         description: 'Enter your name'
         required: true
-        type: string
+        type: number
 
       age:
         description: 'Enter your age'
